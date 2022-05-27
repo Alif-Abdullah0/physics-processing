@@ -14,7 +14,7 @@ public class Point {
   void display() {
     noStroke();
     fill(c);
-    if (y>= 0) ellipse(x, -y, 15, 15);
+    if (y>= 0) square(x, -y, 45);
   }
 
   void move() {

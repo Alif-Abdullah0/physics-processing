@@ -3,7 +3,7 @@ float x, y;
 Point p;
 
 void setup() {
-  size(800, 800);
+  size(800, 600);
   x0=width/2;
   y0=height/2;
   x=0;
