@@ -1,9 +1,9 @@
-public class Point {
+public class PointBlue {
   float x, y, dx, dy, t, resolution;
   color c;
 
 
-  Point(float x, float y) {
+  PointBlue(float x, float y) {
     this.x = x;
     this.y = y;
     this.t = .0001; 
