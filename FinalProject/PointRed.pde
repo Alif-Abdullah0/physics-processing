@@ -13,7 +13,7 @@ public class PointRed {
   void display() {
     noStroke();
     fill(c);
-    square(x,y,45);
+    circle(x,y,45);
   }
   
   void move() {

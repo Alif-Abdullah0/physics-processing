@@ -14,7 +14,7 @@ public class PointBlue {
   void display() {
     noStroke();
     fill(c);
-    if (y>= 0) square(x, -y, 45);
+    if (y>= 0) circle(x, -y, 45);
   }
 
   void move() {
