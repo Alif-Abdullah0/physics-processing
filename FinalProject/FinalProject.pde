@@ -3,6 +3,7 @@ float x, y;
 PointBlue pb;
 PointRed pr;
 Plank plank;
+Goal g;
 int fx = 295, fy = 580, floorheight = 30;
 
 void setup() {
@@ -14,6 +15,7 @@ void setup() {
   //pb = new PointBlue(-300, 0);
   //pr = new PointRed(350, 0);
   plank = new Plank(100,425);
+  g = new Goal();
 }
 
 void draw() {
@@ -41,4 +43,6 @@ void draw() {
   plank.display();
   //plank.increment();
   //if (pr.y < 425) {pr.move();}
+  
+  g.display();
 }
