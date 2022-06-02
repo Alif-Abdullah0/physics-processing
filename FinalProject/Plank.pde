@@ -12,7 +12,7 @@ public class Plank {
     rotate(theta);
     
     fill(220);
-    rect(-200, -2 ,400,4);
+    rect(-200, -2 +32,400,4);
     
     popMatrix();
   }
