@@ -8,18 +8,13 @@ public class Plank {
   
   void display(){
     pushMatrix();
-    translate(300,425);
+    translate(300,460);
     rotate(theta);
     
     fill(220);
-    rect(-200, -2 +32,400,4);
-    
+    rect(-200, -2 ,400,4);
     popMatrix();
+    theta+=.01;
   }
   
-  //void increment(){
-  //  if (theta <= .69){
-  //  theta+=.01;
-  //  }
-  //}
 }

@@ -39,6 +39,11 @@ void draw() {
   //pb.move();
   //pr.display();
   plank.display();
-  //plank.increment();
   //if (pr.y < 425) {pr.move();}
+
+}
+
+void mousePressed(){
+  ellipse( mouseX, mouseY, 2, 2 );
+  text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
 }
