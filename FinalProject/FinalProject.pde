@@ -4,6 +4,7 @@ PointBlue pb;
 PointRed pr;
 Plank plank;
 Goal g;
+int adjDist;
 int fx = 295, fy = 580, floorheight = 30;
 
 void setup() {
@@ -41,8 +42,17 @@ void draw() {
   //pb.move();
   //pr.display();
   plank.display();
-  //plank.increment();
   //if (pr.y < 425) {pr.move();}
-  
   g.display();
+  g.highLight();
+}
+
+void mousePressed(){
+  ellipse( mouseX, mouseY, 2, 2 );
+  text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
+  adjDist = g.adjustInit();
+}
+
+void mouseDragged() {
+  g.adjust(adjDist);
 }

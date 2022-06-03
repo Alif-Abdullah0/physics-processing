@@ -8,32 +8,49 @@ public class Goal {
   int sX;
   int sY;
   
+  color sColor;
+  
   Goal() {
     this.gHeight = 124;
-    this.gWidth = 24;
-    this.gX = 720;
+    this.gWidth = 24; // const
+    this.gX = 720; //const
     this.gY = 80;
     
     this.sHeight = gHeight/2;
-    this.sWidth = gWidth/2;
-    this.sX = gX - 40;
+    this.sWidth = gWidth/2; //const
+    this.sX = gX - 40; // const
     this.sY = gY + gHeight/4;
+    
+    sColor = color(0);
   }
   
   void display() {
     noStroke();
     fill(color(255,0,0));
-    rect(720,0,25,80);
-    fill(0,255,0);
-    rect(720,80,25,this.gHeight);
-    fill(255,0,0);
-    rect(720,80+this.gHeight,25,height-(100+this.gHeight));
+    rect(this.gX,0,this.gWidth,this.gY);
+    fill(color(0,255,0));
+    rect(this.gX,this.gY,this.gWidth,this.gHeight);
+    fill(color(255,0,0));
+    rect(this.gX,80+this.gHeight,25,height-(100+this.gHeight));
     
-    fill(0);
-    rect(680, 111, 12, sHeight);
+    fill(sColor);
+    rect(680, this.sY, this.sWidth, sHeight);
   }
   
   void highLight() {
+    if (sX < mouseX && mouseX < sX+sWidth && sY < mouseY && mouseY < sY+sHeight) {
+      sColor = color(142);
+    } else {
+      sColor = color(0);
+    }
+  }
+  
+  int adjustInit() {
+    return mouseY - sY;
+  }
+  
+  void adjust(int dist) {
+    this.sY = mouseY - dist;
   }
   
 }
