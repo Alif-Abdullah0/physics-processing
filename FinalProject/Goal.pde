@@ -10,6 +10,8 @@ public class Goal {
   
   color sColor;
   
+  boolean stopAdj;
+  
   Goal() {
     this.gHeight = 100;
     this.gWidth = 24; // const
@@ -22,6 +24,8 @@ public class Goal {
     this.sY = this.gY + this.gHeight/4;
     
     sColor = color(0);
+    
+    stopAdj = true;
   }
   
   void display() {
@@ -33,8 +37,10 @@ public class Goal {
     fill(color(255,0,0));
     rect(this.gX,100+this.gY,25,height-(120+this.gY));
     
-    fill(sColor);
-    rect(680, this.sY, this.sWidth, sHeight);
+    if (stopAdj) {
+      fill(sColor);
+      rect(680, this.sY, this.sWidth, sHeight);
+    }
   }
   
   boolean highLight() {
@@ -52,10 +58,25 @@ public class Goal {
   }
   
   void adjust(int dist) {
-    if (80 < mouseY && mouseY < 480) {
+    if (100 < mouseY && mouseY < 480) {
     this.sY = mouseY - dist;
     this.gY = this.sY - this.gHeight/4;
     }
   }
   
+  int getGX() {
+    return this.gX;
+  }
+  
+  int getGY() {
+    return this.gY;
+  }
+  
+  int getGH() {
+    return this.gHeight;
+  }
+  
+  void stopAdj() {
+    stopAdj = false;
+  }
 }

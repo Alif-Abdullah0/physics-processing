@@ -22,4 +22,12 @@ public class PointBlue {
     y=75*sin(radians(45))*t-0.5*9.8*t*t;
     t += resolution;
   }
+  
+  float goalPosDeterX() {
+    return this.x;
+  }
+  
+  float goalPosDeterY() {
+    return this.y;
+  }
 }

@@ -14,8 +14,8 @@ void setup() {
   y0=height/2;
   x=0;
   y=0;
-  //pb = new PointBlue(-300, 0);
-  //pr = new PointRed(350, 0);
+  pb = new PointBlue(-300, 0);
+  pr = new PointRed(350, 0,20,20);
   plank = new Plank(100,425);
   g = new Goal();
   isGAdjClicked = false;
@@ -48,6 +48,30 @@ void draw() {
   g.display();
   
   if (!isGAdjClicked) {g.highLight();}
+  
+  // determine if blue ball crossed the goal
+  float pbX = pb.goalPosDeterX();
+  float pbY = pb.goalPosDeterY();
+  
+  if (pbY > 580) {
+    renderLoss();
+  }
+  
+  if (pbX > g.getGX()) {
+    if(g.getGY() < pbY && pbY < g.getGY() + g.getGH()) {
+      renderWin();
+    } else {
+      renderLoss();
+    }
+  }
+}
+
+// ends the game, shows a YOU WIN text message, with buttons to replay the simulation or restart from the beginning
+void renderWin() {
+}
+
+// ends the game, shows a YOU LOSE text message, with buttons to replay the simulation or restart from the beginning
+void renderLoss() {
 }
 
 void mousePressed(){
