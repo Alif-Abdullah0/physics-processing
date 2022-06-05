@@ -31,18 +31,20 @@ public class Goal {
     fill(color(0,255,0));
     rect(this.gX,this.gY,this.gWidth,this.gHeight);
     fill(color(255,0,0));
-    rect(this.gX,80+this.gHeight,25,height-(100+this.gHeight));
+    rect(this.gX,80+this.gY,25,height-(100+this.gHeight));
     
     fill(sColor);
     rect(680, this.sY, this.sWidth, sHeight);
   }
   
-  void highLight() {
-    if (sX < mouseX && mouseX < sX+sWidth && sY < mouseY && mouseY < sY+sHeight) {
-      sColor = color(142);
-    } else {
-      sColor = color(0);
-    }
+  boolean highLight() {
+    if (sX < mouseX && mouseX < sX+sWidth && sY < mouseY && mouseY < sY+sHeight) {sColor = color(142); return true;}
+    else {sColor = color(0); return false;}
+  }
+  
+  boolean unHighLight() {
+    sColor = color(0);
+    return false;
   }
   
   int adjustInit() {
@@ -51,6 +53,7 @@ public class Goal {
   
   void adjust(int dist) {
     this.sY = mouseY - dist;
+    this.gY = sY + gHeight/4;
   }
   
 }

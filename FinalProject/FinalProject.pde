@@ -6,6 +6,7 @@ Plank plank;
 Goal g;
 int adjDist;
 int fx = 295, fy = 580, floorheight = 30;
+boolean isGAdjClicked;
 
 void setup() {
   size(800, 600);
@@ -17,6 +18,7 @@ void setup() {
   //pr = new PointRed(350, 0);
   plank = new Plank(100,425);
   g = new Goal();
+  isGAdjClicked = false;
 }
 
 void draw() {
@@ -44,13 +46,19 @@ void draw() {
   plank.display();
   //if (pr.y < 425) {pr.move();}
   g.display();
-  g.highLight();
+  
+  if (!isGAdjClicked) {g.highLight();}
 }
 
 void mousePressed(){
   ellipse( mouseX, mouseY, 2, 2 );
   text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
   adjDist = g.adjustInit();
+  isGAdjClicked = g.highLight();
+}
+
+void mouseReleased() {
+  isGAdjClicked = g.unHighLight();
 }
 
 void mouseDragged() {

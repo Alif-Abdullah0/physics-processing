@@ -1,13 +1,17 @@
 public class PointRed {
   float x, y, t, resolution;
   color c;
+  float mass;
+  float dropHeight;
   
-  PointRed(float x, float y) {
+  PointRed(float x, float y, float m, float dropH) {
     this.x = x;
     this.y = y;
     t = 0.0001;
     resolution = .01666666666667;
     c = color(255,0,0);
+    mass = m;
+    dropHeight = dropH;
   }
   
   void display() {
