@@ -11,15 +11,15 @@ public class Goal {
   color sColor;
   
   Goal() {
-    this.gHeight = 124;
+    this.gHeight = 100;
     this.gWidth = 24; // const
     this.gX = 720; //const
     this.gY = 80;
     
     this.sHeight = gHeight/2;
     this.sWidth = gWidth/2; //const
-    this.sX = gX - 40; // const
-    this.sY = gY + gHeight/4;
+    this.sX = this.gX - 40; // const
+    this.sY = this.gY + this.gHeight/4;
     
     sColor = color(0);
   }
@@ -31,7 +31,7 @@ public class Goal {
     fill(color(0,255,0));
     rect(this.gX,this.gY,this.gWidth,this.gHeight);
     fill(color(255,0,0));
-    rect(this.gX,80+this.gY,25,height-(100+this.gHeight));
+    rect(this.gX,100+this.gY,25,height-(120+this.gY));
     
     fill(sColor);
     rect(680, this.sY, this.sWidth, sHeight);
@@ -52,8 +52,10 @@ public class Goal {
   }
   
   void adjust(int dist) {
+    if (80 < mouseY && mouseY < 480) {
     this.sY = mouseY - dist;
-    this.gY = sY + gHeight/4;
+    this.gY = this.sY - this.gHeight/4;
+    }
   }
   
 }
