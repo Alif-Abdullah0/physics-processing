@@ -3,6 +3,7 @@ float x, y;
 PointBlue pb;
 PointRed pr;
 Plank plank;
+Goal g;
 int fx = 295, fy = 580, floorheight = 30;
 
 void setup() {
@@ -11,9 +12,8 @@ void setup() {
   y0=height/2;
   x=0;
   y=0;
-  //pb = new PointBlue(-300, 0);
-  //pr = new PointRed(350, 0);
   plank = new Plank(100,425);
+  g = new Goal();
 }
 
 void draw() {
@@ -35,15 +35,23 @@ void draw() {
   fill(0);
   rect(0, fy, width, height/30);
   
-  //pb.display();
-  //pb.move();
+
   //pr.display();
   plank.display();
+ 
+  
+
+  plank.increment();
+
+  
+  g.display();
   //if (pr.y < 425) {pr.move();}
+
 
 }
 
 void mousePressed(){
+  fill(255);
   ellipse( mouseX, mouseY, 2, 2 );
   text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
 }
