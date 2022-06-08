@@ -4,6 +4,9 @@ PointBlue pb;
 PointRed pr;
 Plank plank;
 Goal g;
+Slider redBlockDist;
+Slider redBlockMass;
+Slider redBlockDropHeight;
 int adjDist;
 int fx = 295, fy = 580, floorheight = 30;
 boolean isGAdjClicked;
@@ -19,6 +22,9 @@ void setup() {
   plank = new Plank(100,425);
   g = new Goal();
   isGAdjClicked = false;
+  redBlockDist = new Slider(20,24,250,60,1,2,"m");
+  redBlockMass = new Slider(20,124,250,60,1,2,"kg");
+  redBlockDropHeight = new Slider(20,224,250,60,1,2,"m");
 }
 
 void draw() {
@@ -64,6 +70,10 @@ void draw() {
       renderLoss();
     }
   }
+  
+  redBlockDist.display();
+  redBlockMass.display();
+  redBlockDropHeight.display();
 }
 
 // ends the game, shows a YOU WIN text message, with buttons to replay the simulation or restart from the beginning
@@ -86,5 +96,7 @@ void mouseReleased() {
 }
 
 void mouseDragged() {
+  if (isGAdjClicked) {
   g.adjust(adjDist);
+  }
 }
