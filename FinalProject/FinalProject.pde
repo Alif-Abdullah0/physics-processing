@@ -22,9 +22,9 @@ void setup() {
   plank = new Plank(100,425);
   g = new Goal();
   isGAdjClicked = false;
-  redBlockDist = new Slider(20,24,250,60,1,2,"m");
-  redBlockMass = new Slider(20,124,250,60,1,2,"kg");
-  redBlockDropHeight = new Slider(20,224,250,60,1,2,"m");
+  redBlockDist = new Slider(20,24,400,60,1,2,"m");
+  redBlockMass = new Slider(20,124,400,60,1,2,"kg");
+  redBlockDropHeight = new Slider(20,224,400,60,1,2,"m");
 }
 
 void draw() {

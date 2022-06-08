@@ -23,8 +23,10 @@ public class Slider {
     rect(this.x, this.y, this.w, this.h);
     textSize(12);
     fill(0);
-    text(str(this.leftBound)+unit, this.x+10, this.y+(3*this.h/5));
-    text(str(this.rightBound)+unit, this.x+this.w-30, this.y+(3*this.h/5));
-    rect(this.x+40,this.y+(2*this.h/5),this.w-80,(this.h/5));
+    text(str(this.leftBound)+unit, this.x+10, this.y+(2*this.h/5));
+    text("X 10^0",this.x+10,this.y+(3*this.h/5));
+    text(str(this.rightBound)+unit, this.x+this.w-30, this.y+(2*this.h/5));
+    text("X 10^0",this.x+this.w-30,this.y+(3*this.h/5));
+    rect(this.x+60,this.y+(3*this.h/10),this.w-100,(this.h/5));
   }
 }
