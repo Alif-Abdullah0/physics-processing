@@ -15,16 +15,14 @@ public class Plank {
     rect(-200, -2 ,400,4);
     popMatrix();
     
-    increment();
-    if ((0 < plank.getX() + 400) && 
-    (0+ width> plank.getX()) &&
-    (580 < plank.getY() +4) &&(height/30 +580 >plank.getY())) print("hi");
+    
+    //if (height/30 +580 >plank.getY()) print("4 ");
 
     
   }
   
   void increment() {
-    theta+=.01;
+    theta += 2*PI/180;
   }
   
   float getX() {
@@ -33,5 +31,13 @@ public class Plank {
   
   float getY() {
     return this.y;
+  }
+  
+  float getTheta() {
+    return this.theta;
+  }
+  
+  void negateTheta() {
+    this.theta -= 2*PI/180;
   }
 }
