@@ -75,8 +75,5 @@ public class Goal {
   int getGH() {
     return this.gHeight;
   }
-  
-  void stopAdj() {
-    stopAdj = false;
-  }
+
 }
