@@ -21,7 +21,7 @@ public class PointRed {
       (pr.getY()+40) < (460 + 2)))) {
       noStroke();
       fill(c);
-      square(x, y, 40);
+      square(x, y, 40*zoom);
       pr.move();
     } else {
       rotating();
@@ -30,7 +30,7 @@ public class PointRed {
 
   void move() {
     t += resolution;
-    setY(this.y+4.9*t*t);
+    y += 4.9*t*t;
   }
 
   float getY() {
@@ -41,19 +41,16 @@ public class PointRed {
     return this.x;
   }
 
-  void setY(float y) {
-    this.y = y;
-  }
 
   void rotating() {
     pushMatrix();
-    translate(300, 460);
+    translate(300*zoom, 460*zoom+290);
     rotate(theta);
 
     fill(c);
-    square(70-20, -40, 40);
+    square((70-20)*zoom, -40*zoom, 40*zoom);
     popMatrix();
-    if ((200*sin(plank.getTheta()) < 580-460)) increment();
+    if ((zoom*200*sin(plank.getTheta()) < (580-520))) increment();
   }
 
   void increment() {

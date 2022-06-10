@@ -8,17 +8,13 @@ public class Plank {
   
   void display(){
     pushMatrix();
-    translate(300,460);
+    translate(300*zoom,460*zoom+290);
     rotate(theta);
-    
+    stroke(0);
     fill(220);
-    rect(-200, -2 ,400,4);
+    rect(-200*zoom, -2*zoom,400*zoom,4*zoom);
     popMatrix();
-    
-    
     //if (height/30 +580 >plank.getY()) print("4 ");
-
-    
   }
   
   void increment() {
@@ -35,9 +31,5 @@ public class Plank {
   
   float getTheta() {
     return this.theta;
-  }
-  
-  void negateTheta() {
-    this.theta -= 2*PI/180;
   }
 }

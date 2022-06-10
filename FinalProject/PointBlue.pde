@@ -17,12 +17,13 @@ public class PointBlue {
   void display() {
     noStroke();
     fill(c);
-    square(x, y, 40);
+    square(x, y, 40*zoom);
   }
 
+ //if 78 is minimum vf, then min height would be 310, so slider 300, max is 125 --> 788
   void move() {
-    x=x0 +100*cos(radians(45))*t;
-    y=y0+ -1*(100*sin(radians(45))*t-0.5*9.8*t*t);
+    x=x0 +125*cos(1.57079632679-0.62831855)*t;
+    y=y0+ -1*(125*sin(1.57079632679-0.62831855)*t-0.5*9.8*t*t);
     t += resolution;
   }
   
@@ -30,6 +31,17 @@ public class PointBlue {
     return this.x;
   }
   
+  float getT() {
+    return t;
+  }
+  
+  float getX() {
+    return x;
+  }
+  
+  float getY() {
+    return y;
+  }
   float goalPosDeterY() {
     return this.y;
   }
