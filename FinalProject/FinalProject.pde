@@ -26,9 +26,9 @@ void setup() {
   plank = new Plank(100*zoom, 425*zoom+290);
   g = new Goal();
   isGAdjClicked = false;
-  redBlockDist = new Slider(20, 24, 300, 60, 1, 2, "m",20,25);
-  redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",2,5);
-  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2, "m",2,5);
+  redBlockDist = new Slider(20, 24, 300, 60, 1, 2, "m",2,5,"Red Block Distance From Fulcrum");
+  redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",2,5,"Red Block Mass");
+  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2, "m",2,5,"Red Block Drop Height");
 }
 
 void draw() {

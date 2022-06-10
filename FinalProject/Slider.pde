@@ -3,10 +3,10 @@ public class Slider {
   
   int sHeight, sWidth, sX, sY;
   
-  String unit;
+  String unit,displayText;
   
   color sColor;
-  Slider(int x, int y, int w, int h, int lB, int rB, String unit, int lBAct, int rBAct) {
+  Slider(int x, int y, int w, int h, int lB, int rB, String unit, int lBAct, int rBAct,String displayT) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -14,6 +14,7 @@ public class Slider {
     this.leftBound = lB;
     this.rightBound = rB;
     this.unit = " "+unit;
+    this.displayText = displayT;
     
     this.sX = this.x + 80;
     this.sY = this.y+this.h/10;
@@ -37,8 +38,15 @@ public class Slider {
     text(str(this.rightBound)+unit, this.x+this.w-50, this.y+(2*this.h/5));
     text("X 10^"+str(rBAct),this.x+this.w-50,this.y+(3*this.h/5));
     rect(this.x+60,this.y+(3*this.h/10),this.w-120,(this.h/5));
+    text(this.displayText+": " + currentSliderValue()+ " "+this.unit,this.x,this.y-5);
     fill(sColor);
     rect(this.sX,this.sY,this.sWidth,this.sHeight);
+  }
+  
+  float currentSliderValue() {
+    float interval = float(this.rightBound)*pow(10,this.rBAct) - float(this.leftBound)*pow(10,this.lBAct);
+    float percent = float(this.sX - (this.x+60))/float(this.w-120);
+    return round(percent * interval);
   }
   
   boolean highLight() {
