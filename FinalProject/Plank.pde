@@ -32,4 +32,8 @@ public class Plank {
   float getTheta() {
     return this.theta;
   }
+
+  void restart() {
+    theta = 0;
+  }
 }
