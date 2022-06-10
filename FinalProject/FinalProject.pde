@@ -104,25 +104,13 @@ void draw() {
 
 
 
-  if (!isGAdjClicked) {
+  if (!isGAdjClicked && done == false) {
     g.highLight();
   }
 
   // determine if blue ball crossed the goal
   float pbX = pb.goalPosDeterX();
   float pbY = pb.goalPosDeterY();
-
-  //  if (pbY > 580) {
-  //    renderLoss();
-  //  }
-
-  //  if (pbX > g.getGX()) {
-  //    if (g.getGY() < pbY && pbY < g.getGY() + g.getGH()) {
-  //restart();
-  //    } else {
-  //      renderLoss();
-  //    }
-  //  }
 
   redBlockDist.display();
   redBlockMass.display();
@@ -141,6 +129,8 @@ void mousePressed() {
   fill(255);
   ellipse( mouseX, mouseY, 2, 2 );
   text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
+  
+  if (done == false) {
   adjDist = g.adjustInit();
   isGAdjClicked = g.highLight();
   
@@ -151,18 +141,22 @@ void mousePressed() {
   rbD = redBlockDist.adjustInit();
   rbM = redBlockMass.adjustInit();
   rbDH = redBlockDropHeight.adjustInit();
-
+  }
   if (mouseX >= 20 && mouseX <= 70 && mouseY >= 300 && mouseY <= 325) done = true;
+ 
 }
 
 void mouseReleased() {
+  if (done == false) {
   isGAdjClicked = g.unHighLight();
   isRBDropHeightClicked = redBlockDropHeight.unHighLight();
   isRBMassClicked = redBlockMass.unHighLight();
   isRBDistClicked = redBlockDist.unHighLight();
+  }
 }
 
 void mouseDragged() {
+  if (done == false) {
   if (isGAdjClicked) {
     g.adjust(adjDist);
   }
@@ -177,5 +171,6 @@ void mouseDragged() {
   
   if(isRBDropHeightClicked){
     redBlockDropHeight.adjust(rbDH);
+  }
   }
 }
