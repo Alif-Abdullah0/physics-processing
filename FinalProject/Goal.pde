@@ -23,7 +23,7 @@ public class Goal {
     this.sX = this.gX - 40; // const
     this.sY = this.gY + this.gHeight/4;
     
-    sColor = color(0);
+    sColor = color(71);
     
     stopAdj = true;
   }
@@ -37,19 +37,21 @@ public class Goal {
     fill(color(255,0,0));
     rect(this.gX,100+this.gY,25,height-(120+this.gY));
     
+    
     if (stopAdj) {
       fill(sColor);
+      stroke(0);
       rect(680, this.sY, this.sWidth, sHeight);
     }
   }
   
   boolean highLight() {
     if (sX < mouseX && mouseX < sX+sWidth && sY < mouseY && mouseY < sY+sHeight) {sColor = color(142); return true;}
-    else {sColor = color(0); return false;}
+    else {sColor = color(71); return false;}
   }
   
   boolean unHighLight() {
-    sColor = color(0);
+    sColor = color(71);
     return false;
   }
   

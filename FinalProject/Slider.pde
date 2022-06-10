@@ -1,12 +1,12 @@
 public class Slider {
-  int x, y, w, h, leftBound, rightBound;
+  int x, y, w, h, leftBound, rightBound,lBAct, rBAct;
   
   int sHeight, sWidth, sX, sY;
   
   String unit;
   
   color sColor;
-  Slider(int x, int y, int w, int h, int lB, int rB, String unit) {
+  Slider(int x, int y, int w, int h, int lB, int rB, String unit, int lBAct, int rBAct) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -20,6 +20,9 @@ public class Slider {
     this.sWidth = this.w/20;
     this.sHeight = 2*this.h/10+24;
     
+    this.lBAct = lBAct;
+    this.rBAct = rBAct;
+    
     this.sColor = color(71);
   }
   
@@ -30,9 +33,9 @@ public class Slider {
     textSize(12);
     fill(0);
     text(str(this.leftBound)+unit, this.x+10, this.y+(2*this.h/5));
-    text("X 10^0",this.x+10,this.y+(3*this.h/5));
+    text("X 10^"+str(lBAct),this.x+7,this.y+(3*this.h/5));
     text(str(this.rightBound)+unit, this.x+this.w-50, this.y+(2*this.h/5));
-    text("X 10^0",this.x+this.w-50,this.y+(3*this.h/5));
+    text("X 10^"+str(rBAct),this.x+this.w-50,this.y+(3*this.h/5));
     rect(this.x+60,this.y+(3*this.h/10),this.w-120,(this.h/5));
     fill(sColor);
     rect(this.sX,this.sY,this.sWidth,this.sHeight);
@@ -58,7 +61,7 @@ public class Slider {
   }
   
   void adjust(int dist) {
-    if(this.x+70 < mouseX && mouseX < this.x+this.w-70) {
+    if(this.x+75 < mouseX && mouseX < this.x+this.w-75) {
       this.sX = mouseX - dist;
     }
   }

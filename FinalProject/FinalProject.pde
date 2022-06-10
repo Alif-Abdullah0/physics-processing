@@ -26,9 +26,9 @@ void setup() {
   plank = new Plank(100*zoom, 425*zoom+290);
   g = new Goal();
   isGAdjClicked = false;
-  redBlockDist = new Slider(20, 24, 300, 60, 1, 2, "m");
-  redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg");
-  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2, "m");
+  redBlockDist = new Slider(20, 24, 300, 60, 1, 2, "m",20,25);
+  redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",2,5);
+  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2, "m",2,5);
 }
 
 void draw() {
@@ -106,6 +106,18 @@ void draw() {
 
   if (!isGAdjClicked && done == false) {
     g.highLight();
+  }
+  
+  if (!isRBDistClicked && done == false){
+    redBlockDist.highLight();
+  } 
+  
+  if(!isRBMassClicked && done == false){
+    redBlockMass.highLight();
+  } 
+  
+  if(!isRBDropHeightClicked && done == false){
+    redBlockDropHeight.highLight();
   }
 
   // determine if blue ball crossed the goal
