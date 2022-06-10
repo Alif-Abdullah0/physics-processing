@@ -7,9 +7,9 @@ Goal g;
 Slider redBlockDist;
 Slider redBlockMass;
 Slider redBlockDropHeight;
-int adjDist;
+int adjDist, rbD,rbM,rbDH;
 int fx = 295, fy = 580, floorheight = 30;
-boolean isGAdjClicked;
+boolean isGAdjClicked, isRBDistClicked, isRBMassClicked, isRBDropHeightClicked;
 boolean done;
 color doneC;
 float zoom = .5;
@@ -25,9 +25,9 @@ void setup() {
   plank = new Plank(100*zoom, 425*zoom+290);
   g = new Goal();
   isGAdjClicked = false;
-  redBlockDist = new Slider(20, 24, 400, 60, 1, 2, "m");
-  redBlockMass = new Slider(20, 124, 400, 60, 1, 2, "kg");
-  redBlockDropHeight = new Slider(20, 224, 400, 60, 1, 2, "m");
+  redBlockDist = new Slider(20, 24, 300, 60, 1, 2, "m");
+  redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg");
+  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2, "m");
 }
 
 void draw() {
@@ -127,12 +127,19 @@ void mousePressed() {
   text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
   adjDist = g.adjustInit();
   isGAdjClicked = g.highLight();
+  
+  isRBDropHeightClicked = redBlockDropHeight.highLight();
+  isRBMassClicked = redBlockMass.highLight();
+  isRBDistClicked = redBlockDist.highLight();
 
   if (mouseX >= 20 && mouseX <= 70 && mouseY >= 300 && mouseY <= 325) done = true;
 }
 
 void mouseReleased() {
   isGAdjClicked = g.unHighLight();
+  isRBDropHeightClicked = redBlockDropHeight.unHighLight();
+  isRBMassClicked = redBlockMass.unHighLight();
+  isRBDistClicked = redBlockDist.unHighLight();
 }
 
 void mouseDragged() {
