@@ -131,6 +131,10 @@ void mousePressed() {
   isRBDropHeightClicked = redBlockDropHeight.highLight();
   isRBMassClicked = redBlockMass.highLight();
   isRBDistClicked = redBlockDist.highLight();
+  
+  rbD = redBlockDist.adjustInit();
+  rbM = redBlockMass.adjustInit();
+  rbDH = redBlockDropHeight.adjustInit();
 
   if (mouseX >= 20 && mouseX <= 70 && mouseY >= 300 && mouseY <= 325) done = true;
 }
@@ -145,5 +149,17 @@ void mouseReleased() {
 void mouseDragged() {
   if (isGAdjClicked) {
     g.adjust(adjDist);
+  }
+  
+  if (isRBDistClicked){
+    redBlockDist.adjust(rbD);
+  } 
+  
+  if(isRBMassClicked){
+    redBlockMass.adjust(rbM);
+  } 
+  
+  if(isRBDropHeightClicked){
+    redBlockDropHeight.adjust(rbDH);
   }
 }

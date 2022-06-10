@@ -1,10 +1,7 @@
 public class Slider {
   int x, y, w, h, leftBound, rightBound;
   
-  int sHeight;
-  int sWidth;
-  int sX;
-  int sY;
+  int sHeight, sWidth, sX, sY;
   
   String unit;
   
@@ -55,4 +52,15 @@ public class Slider {
     this.sColor = color(71);
     return false;
   }
+  
+  int adjustInit() {
+    return mouseX - this.sX;
+  }
+  
+  void adjust(int dist) {
+    if(this.x+70 < mouseX && mouseX < this.x+this.w-70) {
+      this.sX = mouseX - dist;
+    }
+  }
+  
 }
