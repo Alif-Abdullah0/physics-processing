@@ -14,6 +14,9 @@ boolean done;
 color doneC;
 float zoom = .5;
 boolean state = false;
+float rbDist;
+float rbMass;
+float rbDropHeight;
 
 void setup() {
   size(800, 600);
@@ -26,7 +29,7 @@ void setup() {
   plank = new Plank(100*zoom, 425*zoom+290);
   g = new Goal();
   isGAdjClicked = false;
-  redBlockDist = new Slider(20, 24, 300, 60, 1, 2, "m",2,5,"Red Block Distance From Fulcrum");
+  redBlockDist = new Slider(20, 24, 300, 60, 1, 1, "m",0,2,"Red Block Distance From Fulcrum");
   redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",2,5,"Red Block Mass");
   redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2, "m",2,5,"Red Block Drop Height");
 }
@@ -55,7 +58,11 @@ void draw() {
     //  restart();
     //  print("state is true");
     //}
+    //pr.displayInit(redBlockDist.currentSliderValue()+150,400);
   } else {
+    rbDist = redBlockDist.currentSliderValue();
+    rbMass = redBlockMass.currentSliderValue();
+    rbDropHeight = redBlockDropHeight.currentSliderValue();
     if (!((pr.getX()+20) < (300 + 200) && 
       (pr.getX()+20) > (300-200) && 
       ((pr.getY()+40) > (460 - 2) && 

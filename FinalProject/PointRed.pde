@@ -27,6 +27,14 @@ public class PointRed {
       rotating();
     }
   }
+  
+  void displayInit(float xInit, float yInit) {
+    this.x = xInit;
+    this.y = yInit;
+    noStroke();
+    fill(c);
+    square(x, y, 40*zoom);
+  }
 
   void move() {
     t += resolution;

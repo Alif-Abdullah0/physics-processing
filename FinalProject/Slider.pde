@@ -17,7 +17,7 @@ public class Slider {
     this.unit = " "+unit;
     this.displayText = displayT;
     
-    this.sX = this.x + 80;
+    this.sX = this.x + 60;
     this.sY = this.y+this.h/10;
     this.sWidth = this.w/20;
     this.sHeight = 2*this.h/10+24;
@@ -50,6 +50,8 @@ public class Slider {
     float ret_val = round(percent * interval);
     if (ret_val == 0.0) {
       ret_val = round(this.leftBound*pow(10,this.lBAct));
+    } else if (round(ret_val + 1) == round(this.rightBound*pow(10,this.rBAct))) {
+      ret_val = round(this.rightBound*pow(10,this.rBAct));
     }
     return ret_val;
   }
