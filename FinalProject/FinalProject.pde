@@ -31,7 +31,7 @@ void setup() {
   isGAdjClicked = false;
   redBlockDist = new Slider(20, 24, 300, 60, 1, 1, "m",0,2,"Red Block Distance From Fulcrum");
   redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",2,5,"Red Block Mass");
-  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2, "m",2,5,"Red Block Drop Height");
+  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2.2, "m",1,2,"Red Block Drop Height");
 }
 
 void draw() {
@@ -58,7 +58,7 @@ void draw() {
     //  restart();
     //  print("state is true");
     //}
-    //pr.displayInit(redBlockDist.currentSliderValue()+150,400);
+    //pr.displayInit(redBlockDist.currentSliderValue()+150,518-9-redBlockDropHeight.currentSliderValue());
   } else {
     rbDist = redBlockDist.currentSliderValue();
     rbMass = redBlockMass.currentSliderValue();

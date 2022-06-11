@@ -47,12 +47,7 @@ public class Slider {
   float currentSliderValue() {
     float interval = this.rightBound*pow(10,this.rBAct) - this.leftBound*pow(10,this.lBAct);
     float percent = float(this.sX - (this.x+60))/float(this.w-this.sWidth-120);
-    float ret_val = round(percent * interval);
-    if (ret_val == 0.0) {
-      ret_val = round(this.leftBound*pow(10,this.lBAct));
-    } else if (round(ret_val + 1) == round(this.rightBound*pow(10,this.rBAct))) {
-      ret_val = round(this.rightBound*pow(10,this.rBAct));
-    }
+    float ret_val = round(percent * interval) + this.leftBound*pow(10,this.lBAct);
     return ret_val;
   }
   
