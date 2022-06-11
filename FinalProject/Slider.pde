@@ -1,12 +1,13 @@
 public class Slider {
-  int x, y, w, h, leftBound, rightBound,lBAct, rBAct;
+  int x, y, w, h,lBAct, rBAct;
+  float leftBound, rightBound;
   
   int sHeight, sWidth, sX, sY;
   
   String unit,displayText;
   
   color sColor;
-  Slider(int x, int y, int w, int h, int lB, int rB, String unit, int lBAct, int rBAct,String displayT) {
+  Slider(int x, int y, int w, int h, float lB, float rB, String unit, int lBAct, int rBAct,String displayT) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -44,9 +45,13 @@ public class Slider {
   }
   
   float currentSliderValue() {
-    float interval = float(this.rightBound)*pow(10,this.rBAct) - float(this.leftBound)*pow(10,this.lBAct);
-    float percent = float(this.sX - (this.x+60))/float(this.w-120);
-    return round(percent * interval);
+    float interval = this.rightBound*pow(10,this.rBAct) - this.leftBound*pow(10,this.lBAct);
+    float percent = float(this.sX - (this.x+60))/float(this.w-this.sWidth-120);
+    float ret_val = round(percent * interval);
+    if (ret_val == 0.0) {
+      ret_val = round(this.leftBound*pow(10,this.lBAct));
+    }
+    return ret_val;
   }
   
   boolean highLight() {
@@ -69,8 +74,14 @@ public class Slider {
   }
   
   void adjust(int dist) {
-    if(this.x+75 < mouseX && mouseX < this.x+this.w-75) {
+    if(this.x+59 < this.sX && this.sX+this.sWidth < this.x+this.w-59) {
       this.sX = mouseX - dist;
+    }
+    if(this.sX <= this.x+59) {
+      this.sX = this.x+60;
+    }
+    if (this.x+this.w-59 <= this.sX + this.sWidth) {
+      this.sX = this.x+this.w-this.sWidth-60;
     }
   }
   
