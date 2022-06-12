@@ -60,10 +60,17 @@ public class Goal {
   }
   
   void adjust(int dist) {
-    if (100 < mouseY && mouseY < 480) {
+    if (24 < this.sY && this.sY +this.sHeight < 556) {
     this.sY = mouseY - dist;
-    this.gY = this.sY - this.gHeight/4;
+    } 
+    if (this.sY <= 24) {
+      this.sY = 25;
+    } 
+    if (556 <= this.sY + this.sHeight) {
+      this.sY = 555-this.sHeight;
     }
+    this.gY = this.sY - this.gHeight/4;
+    
   }
   
   int getGX() {

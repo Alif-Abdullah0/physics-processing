@@ -19,6 +19,7 @@ float rbMass;
 float rbDropHeight;
 float plankMass;
 float bbMass;
+Tracker tracker;
 
 void setup() {
   size(800, 600);
@@ -26,7 +27,7 @@ void setup() {
   y0=height*.5/2;
   x=0;
   y=0;
-  pb = new PointBlue(100*zoom, 418*zoom+290);
+  pb = new PointBlue(100*zoom, 418*zoom+290,85);
   pr = new PointRed(350*zoom, 0, 20*zoom, 20*zoom+290);
   plank = new Plank(100*zoom, 425*zoom+290);
   g = new Goal();
@@ -34,12 +35,13 @@ void setup() {
   redBlockDist = new Slider(20, 24, 300, 60, 1, 1, "m",0,2,"Red Block Distance From Fulcrum");
   redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",2,5,"Red Block Mass");
   redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2.2, "m",1,2,"Red Block Drop Height");
+  tracker = new Tracker(340,20,280,120);
 }
 
 void draw() {
   //translate(x0-300, y0);
   background(140, 80, 67);
-
+  tracker.display(2,3,4);
   //fulcrum
   fill(200);
   triangle(fx*zoom, fy*zoom+290, 300*zoom, (430+30)*zoom+290, 305*zoom, (550+30)*zoom+290);
@@ -87,7 +89,7 @@ void draw() {
       if (pb.getX() > width && pb.getY() > height) {
         done = false;
         plank.restart();
-        pb =  new PointBlue(100*zoom, 418*zoom+290);
+        pb =  new PointBlue(100*zoom, 418*zoom+290,85);
         pr = new PointRed(350*zoom, 0, 20*zoom, 20*zoom+290);
       }
     }
