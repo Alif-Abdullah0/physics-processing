@@ -17,6 +17,8 @@ boolean state = false;
 float rbDist;
 float rbMass;
 float rbDropHeight;
+float plankMass;
+float bbMass;
 
 void setup() {
   size(800, 600);
@@ -134,6 +136,19 @@ void draw() {
   redBlockDist.display();
   redBlockMass.display();
   redBlockDropHeight.display();
+}
+
+// parameters listed above: red block mass, red block drop height, red block distance from fulcrum, blue block mass, plank mass, plank length
+float[] velocities(float rbM,float rbDH,float rbD,float bbM,float pM,float pL) {
+  
+  float rbVF = sqrt(2*9.8*rbDH);
+  float rotationalInertiaPlank = (1.0/12.0)*pM*pow(pL,2);
+  float rotationalInertiaBlue = bbM*pow(100,2);
+  float rotationalInertiaRed = rbM*pow(rbD,2);
+  float angular_velocity = (rbM*rbVF*rbD)/(rotationalInertiaPlank+rotationalInertiaBlue+rotationalInertiaRed);
+  float linear_velocity = angular_velocity * rbD;
+  float[] velos = {angular_velocity,linear_velocity};
+  return velos;
 }
 
 // ends the game, shows a YOU WIN text message, with buttons to replay the simulation or restart from the beginning
