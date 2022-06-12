@@ -32,16 +32,16 @@ void setup() {
   plank = new Plank(100*zoom, 425*zoom+290);
   g = new Goal();
   isGAdjClicked = false;
-  redBlockDist = new Slider(20, 24, 300, 60, 1, 1, "m",0,2,"Red Block Distance From Fulcrum");
-  redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",1,2,"Red Block Mass");
-  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 5.09, "m",1,2,"Red Block Drop Height");
+  redBlockDist = new Slider(20, 24, 300, 60, 3, 1, "m",1,2,"Red Block Distance From Fulcrum");
+  redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",1,9,"Red Block Mass");
+  redBlockDropHeight = new Slider(20, 224, 300, 60, 5, 1.018, "m",2,3,"Red Block Drop Height");
   tracker = new Tracker(340,20,280,120);
 }
 
 void draw() {
   //translate(x0-300, y0);
   background(140, 80, 67);
-  tracker.display(sqrt(pow((720-pb.getX()),2)+pow( (g.getGY()+(g.getGH()/2) )-pb.getY(),2)),round(pb.getVH()),round(pb.getVV()));
+  tracker.display(sqrt(pow((720-pb.getX()),2)+pow( (g.getGY()*2+(g.getGH()) )-(pb.getY()*2),2)),round(pb.getVH()),round(pb.getVV()));
   //fulcrum
   fill(200);
   triangle(fx*zoom, fy*zoom+290, 300*zoom, (430+30)*zoom+290, 305*zoom, (550+30)*zoom+290);
@@ -57,8 +57,8 @@ void draw() {
       }
       
    rbDist = redBlockDist.currentSliderValue();
-    rbMass = redBlockMass.currentSliderValue();
-    rbDropHeight = redBlockDropHeight.currentSliderValue();
+   rbMass = redBlockMass.currentSliderValue();
+   rbDropHeight = redBlockDropHeight.currentSliderValue();
       
   if (done == false) {
     fill(200);
@@ -73,7 +73,7 @@ void draw() {
     //  restart();
     //  print("state is true");
     //}
-    pr.displayInit(redBlockDist.currentSliderValue(),518-9-redBlockDropHeight.currentSliderValue());
+    pr.displayInit(redBlockDist.currentSliderValue(),518-9-redBlockDropHeight.currentSliderValue()/2);
   } else {
     
     pr.changeMass(redBlockMass.currentSliderValue());
@@ -81,7 +81,7 @@ void draw() {
     float vf = velocities(rbMass, rbDropHeight, rbDist,1,200,0.1)[1];
     //print(vf);
     //print("\n");
-    //pb.setVelocity(vf);
+    pb.setVelocity(vf);
     if (!(
       ((pr.getY()+40*zoom+2) > plank.getY()+18 
       ))) {
