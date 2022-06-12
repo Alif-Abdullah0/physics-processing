@@ -15,13 +15,12 @@ public class PointRed {
   }
 
   void display() {
-    if (!((pr.getX()+20) < (300 + 200) && 
-      (pr.getX()+20) > (300-200) && 
-      ((pr.getY()+40) > (460 - 2) && 
-      (pr.getY()+40) < (460 + 2)))) {
+    if (!(
+      ((pr.getY()+40*zoom+2) > plank.getY()+18))) {
       noStroke();
       fill(c);
-      square(x, y, 40*zoom);
+      square(150+rbDist, y, 40*zoom);
+      print("not colliding");
       pr.move();
     } else {
       rotating();
@@ -33,7 +32,7 @@ public class PointRed {
     this.y = yInit;
     noStroke();
     fill(c);
-    square(x, y, 40*zoom);
+    square(150+rbDist, y, 40*zoom);
   }
 
   void move() {
@@ -56,7 +55,7 @@ public class PointRed {
     rotate(theta);
 
     fill(c);
-    square((70-20)*zoom, -40*zoom, 40*zoom);
+    square(rbDist, -40*zoom, 40*zoom);
     popMatrix();
     if ((zoom*200*sin(plank.getTheta()) < (580-520))) increment();
   }
