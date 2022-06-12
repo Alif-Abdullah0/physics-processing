@@ -47,5 +47,9 @@ public class PointBlue {
     return this.y;
   }
   
+  void setVelocity(float v) {
+    this.v = v;
+  }
+  
 
 }

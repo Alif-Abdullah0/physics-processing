@@ -33,8 +33,8 @@ void setup() {
   g = new Goal();
   isGAdjClicked = false;
   redBlockDist = new Slider(20, 24, 300, 60, 1, 1, "m",0,2,"Red Block Distance From Fulcrum");
-  redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",2,5,"Red Block Mass");
-  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 2.2, "m",1,2,"Red Block Drop Height");
+  redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",1,2,"Red Block Mass");
+  redBlockDropHeight = new Slider(20, 224, 300, 60, 1, 5.09, "m",1,2,"Red Block Drop Height");
   tracker = new Tracker(340,20,280,120);
 }
 
@@ -62,11 +62,17 @@ void draw() {
     //  restart();
     //  print("state is true");
     //}
-    //pr.displayInit(redBlockDist.currentSliderValue()+150,518-9-redBlockDropHeight.currentSliderValue());
+    pr.displayInit(redBlockDist.currentSliderValue()+150,518-9-redBlockDropHeight.currentSliderValue());
   } else {
     rbDist = redBlockDist.currentSliderValue();
     rbMass = redBlockMass.currentSliderValue();
     rbDropHeight = redBlockDropHeight.currentSliderValue();
+    pr.changeMass(redBlockMass.currentSliderValue());
+    float w_0 = velocities(rbMass, rbDropHeight, rbDist,1,200,0.1)[0];
+    float vf = velocities(rbMass, rbDropHeight, rbDist,1,200,0.1)[1];
+    //print(vf);
+    //print("\n");
+    //pb.setVelocity(vf);
     if (!((pr.getX()+20) < (300 + 200) && 
       (pr.getX()+20) > (300-200) && 
       ((pr.getY()+40) > (460 - 2) && 

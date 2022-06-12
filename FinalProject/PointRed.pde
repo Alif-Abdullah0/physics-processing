@@ -64,4 +64,13 @@ public class PointRed {
   void increment() {
     theta += 2*PI/180;
   }
+  
+  void changeMass(float m) {
+    this.mass = m;
+  }
+  
+  float getMass() {
+    return this.mass;
+  }
+  
 }
