@@ -8,13 +8,13 @@ public class Tracker {
     this.h = h;
   }
   
-  void display(float ybD, float ybHV, float ybVV) {
+  void display(float ybD, float ybVH, float ybVV) {
     noFill();
     stroke(0);
     rect(this.x,this.y,this.w,this.h);
     fill(0);
     text("Yellow Block Distance From Goal: " + ybD + "m",this.x+5,this.y+20);
-    text("Yellow Block Horizontal Velocity: " + ybHV + "m/s",this.x+5,this.y+60);
+    text("Yellow Block Horizontal Velocity: " + ybVH + "m/s",this.x+5,this.y+60);
     text("Yellow Block Vertical Velocity: " + ybVV + "m/s",this.x+5,this.y+100);
   }
   

@@ -41,7 +41,7 @@ void setup() {
 void draw() {
   //translate(x0-300, y0);
   background(140, 80, 67);
-  tracker.display(2,3,4);
+  tracker.display(sqrt(pow((720-pb.getX()),2)+pow( (g.getGY()+(g.getGH()/2) )-pb.getY(),2)),round(pb.getVH()),round(pb.getVV()));
   //fulcrum
   fill(200);
   triangle(fx*zoom, fy*zoom+290, 300*zoom, (430+30)*zoom+290, 305*zoom, (550+30)*zoom+290);
@@ -62,7 +62,7 @@ void draw() {
     //  restart();
     //  print("state is true");
     //}
-    pr.displayInit(redBlockDist.currentSliderValue()+150,518-9-redBlockDropHeight.currentSliderValue());
+    //pr.displayInit(redBlockDist.currentSliderValue()+150,518-9-redBlockDropHeight.currentSliderValue());
   } else {
     rbDist = redBlockDist.currentSliderValue();
     rbMass = redBlockMass.currentSliderValue();
