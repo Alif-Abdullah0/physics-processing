@@ -20,7 +20,7 @@ public class PointRed {
       noStroke();
       fill(c);
       square(150+rbDist, y, 40*zoom);
-      print("not colliding");
+      //print("not colliding");
       pr.move();
     } else {
       rotating();

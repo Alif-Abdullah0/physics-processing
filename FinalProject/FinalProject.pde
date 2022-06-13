@@ -20,6 +20,10 @@ float rbDropHeight;
 float plankMass;
 float bbMass;
 Tracker tracker;
+boolean didYaWin;
+boolean init;
+float loserCount = 0;
+float winnerCount = 0;
 
 void setup() {
   size(800, 600);
@@ -36,6 +40,7 @@ void setup() {
   redBlockMass = new Slider(20, 124, 300, 60, 1, 2, "kg",1,9,"Red Block Mass");
   redBlockDropHeight = new Slider(20, 224, 300, 60, 5, 1.018, "m",2,3,"Red Block Drop Height");
   tracker = new Tracker(340,20,280,120);
+  init = true;
 }
 
 void draw() {
@@ -94,9 +99,23 @@ void draw() {
         plank.increment();
       }
       pb.move();
+      if (pb.getX() < 720 && pb.getY()>580) {
+        init = false;
+        didYaWin = false;
+        loserCount += 0.25;
+      }
       if (pb.getX() + 40*zoom > g.getGX() && pb.getX() + 40*zoom < 744) {
-        if ((pb.getY() > g.getGY()) && (pb.getY() < g.getGY() + 100)) print("win");
-        else print("lose");
+        init = false;
+        if ((pb.getY() > g.getGY()) && (pb.getY() < g.getGY() + g.getGH())) {
+          //print("win");
+          didYaWin = true;
+          winnerCount += 0.5;
+        }
+        else {
+          /////print("lose");
+          didYaWin = false;
+          loserCount += 0.5;
+        }
       }
     
       
@@ -146,6 +165,16 @@ void draw() {
   redBlockDist.display();
   redBlockMass.display();
   redBlockDropHeight.display();
+  
+  fill(0);
+  if (!init) {
+    
+  if (!didYaWin) {
+    text("Nice job losing! Loser Count: "+round(loserCount),400,400);
+  } else {
+    text("huh. you won. lucky fluke... Winner Count: "+round(winnerCount),400,400);
+  }
+  }
 }
 
 // parameters listed above: red block mass, red block drop height, red block distance from fulcrum, blue block mass, plank mass, plank length
