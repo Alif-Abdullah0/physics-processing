@@ -7,6 +7,7 @@ IMPORTANT THINGS TO NOTE:
 * Each pixel on the y-axis of the world covers 2 meters. Each pixel in the x-axis of the world covers 1 meter.  
 * The program does not work according to our time scale - it is sped up to make the simulation occur quicker.
 * The mass of the plank is 0.1 kg. The plank is 200 meters long. The mass of the yellow block is 1 kg. These values were chosen at Angela's whim.
+* The range of values for the sliders were chosen so it would be easier for users to win the game.
 
 RELEVANT SHENANIGANS:
 1) Goal: You have the power to move the goal, with our handy, dandy, nifty, difty slider, right next to the green goal! Click it, drag it up and down, and kablammo! The goal will MOVE! Exciting stuff!
