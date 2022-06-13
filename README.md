@@ -16,5 +16,5 @@ RELEVANT SHENANIGANS:
 * drop height of block  
 NEXT!  
 3) Trackers: Tracker in the top right, tracker knows what is best, tracker in the top right, tracker will do the rest! Your government-mandated tracker resides in the top right, tracking the distance of the launched yellow block from the goal, the yellow block's vertical and horizontal velocity!  YAY!
-
+* Note that the distance tracker will calculate the distance between the top left corner of the goal and the top left corner of the block.
 That's all for now, folks!
